@@ -9,16 +9,13 @@
         "bonus2_ar": "",
         "bonus3_ar": "✅ ضمان ديال 3 أشهر كاملة   📜",
         "bonus4_ar": "✅ حساب سبوتيفاي بريميوم خاص مجاني ",
-
         "infos": "✅ التوصيل مجاني و الدفع عند الإستلام 🚚 مع ضمان 3 أشهر",
         "description": [
             "🎉 AirPods Pro الجيل الثاني",
             "🔋 البطارية كتدوم حتى 7 ساعات ديال الاستعمال المستمر، وكيكون عندك إمكانية تشحنهم 5 المرات من العلبة الخاصة بيهم، يعني كتوصل ب كثر من 30 ساعة ديال الاستماع."
-            
         ],
         "primaryImage": "/airpodspro2/image3.jpeg",
         "bonusImage": "/airpodsmax/spotify2.png",
-
         "features": [
             "💥 iMarket لي جابت ليكم Airpods Pro 2 eme generation اجي تشوف معايا مميزات ديال هاد    :",
             "✅ كيشدو ف الشارج حتال 30 ساعة",
@@ -147,7 +144,7 @@
     },
     {
         "id": 10,
-        "color":1,
+        "color": 1,
         "name": "AirPods Max ( Version USA 🇺🇸 ) ",
         "price": "229 ",
         "twoPrice": "399 ",
@@ -158,7 +155,6 @@
         "infos": "✅ التوصيل مجاني و الدفع عند الإستلام 🚚 مع ضمان 6 أشهر",
         "description": [
             "🎉 AirPods Max Master Copy "
-            
         ],
         "primaryImage": "/airpodsmax/image3.jpg",
         "bonusImage": "/airpodsmax/spotify2.png",
@@ -251,27 +247,22 @@
         "price": "449 ",
         "twoPrice": "829 ",
         "oldPrice": "700 ",
-        
         "bonus3_ar": "✅ ضمان ديال 12 أشهر كاملة   📜",
         "bonus4_ar": "✅ NFC تتميز بتقنية  ",
-
         "infos": "✅ التوصيل مجاني و الدفع عند الإستلام 🚚 مع ضمان 12 أشهر",
         "description": [
-    "📱 Écran tactile : Grand écran HD, lumineux et réactif",
-    "🧭 GPS intégré : Suivi précis de vos activités",
-    "💡 Notifications intelligentes : Appels, messages, et réseaux sociaux en un coup d’œil",
-    "🏋️‍♂️ Suivi d’activité : Podomètre, cardiofréquencemètre, suivi du sommeil",
-    "💦 Résistance à l’eau : Certifiée IP68 pour toutes vos activités",
-    "⚡ Autonomie : Jusqu’à 7 jours avec une seule charge",
-    "📞 Appels Bluetooth : Répondez et passez des appels directement depuis la montre",
-    "🎵 Contrôle de la musique : Gérez vos playlists en toute simplicité",
-    "🔋 Recharge rapide : 2 heures de charge pour une semaine d’utilisation"
-],
-        "primaryImage": "/rollex/image1.jpeg",
-
-        "features": [
-            
+            "📱 Écran tactile : Grand écran HD, lumineux et réactif",
+            "🧭 GPS intégré : Suivi précis de vos activités",
+            "💡 Notifications intelligentes : Appels, messages, et réseaux sociaux en un coup d’œil",
+            "🏋️‍♂️ Suivi d’activité : Podomètre, cardiofréquencemètre, suivi du sommeil",
+            "💦 Résistance à l’eau : Certifiée IP68 pour toutes vos activités",
+            "⚡ Autonomie : Jusqu’à 7 jours avec une seule charge",
+            "📞 Appels Bluetooth : Répondez et passez des appels directement depuis la montre",
+            "🎵 Contrôle de la musique : Gérez vos playlists en toute simplicité",
+            "🔋 Recharge rapide : 2 heures de charge pour une semaine d’utilisation"
         ],
+        "primaryImage": "/rollex/image1.jpeg",
+        "features": [],
         "images": [
             "/rollex/image1.jpeg",
             "/rollex/image2.jpeg",
@@ -282,5 +273,36 @@
         "rating": "5",
         "nombreRating": "1163",
         "category": "Smart Watch"
+    },
+    {
+        "id": 17,
+        "name": "AirPods 4 (Version USA 🇺🇸)",
+        "price": "199",
+        "twoPrice": "349",
+        "oldPrice": "550",
+        "bonus1_ar": "✅ حساب سبوتيفاي بريميوم خاص مجاني",
+        "bonus2_ar": "✅   غلاف مجاني",
+        "bonus3_ar": "✅ كيشدو ف الشارج حتال 30 ساعة",
+        "bonus4_ar": "✅  ضمان ديال 3 أشهر كاملة من المصنع 📜",
+        "infos": "✅ التوصيل مجاني و الدفع عند الإستلام 🚚 مع ضمان 3 أشهر",
+        "description": [
+            "🎉 AirPods 4 Master Copy"
+        ],
+        "primaryImage": "/airpods3/image1.jpg",
+        "bonusImage": "/airpods3/spotify2.png",
+        "features": [
+            "💥 iMarket لي جابت ليكم AirPods 4 اجي تشوف معايا مميزات ديال هاد :",
+            "✅ كيشدو ف الشارج حتال 30 ساعة",
+            "✅ ميكروفون بجودة عالية ومتحتاجش ترفع صوتك باش اسمعك الشخص الاخر",
+            "✅ كيخدمو فجميع انواع الهواتف",
+            "التوصيل مجانا 🚚 في جميع مدن المغرب ف 24 ساعة ونزيدك عندك ضمان 3 اشهر"
+        ],
+        "images": [
+            "/airpods4/image1.jpg",
+            "/airpods4/image2.jpg"
+        ],
+        "rating": "5",
+        "nombreRating": "627",
+        "category": "AirPods"
     }
 ]
