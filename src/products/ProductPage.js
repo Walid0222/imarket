@@ -16,6 +16,42 @@ const ProductPage = () => {
         { name: 'أزرق', hex: '#007bff' }, // Blue
         { name: 'أحمر', hex: '#ff0000' }  // Red
     ];
+    const [selectedPack, setSelectedPack] = useState(''); // Nouveau state pour le pack
+    const airpodsProductNames = [
+        'AirPods 3', 'AirPods 4', 'AirPods Pro 2', 'AirPods', 'AirPods USA', 'AirPods Pro', 'AirPods Pro USA'
+    ]; // 'AirPods Max' retiré
+    const packs = [
+        {
+            id: 'vip',
+            name: '🔥 Pack VIP',
+            price: 199,
+            details: [
+                '✅ AirPods USA',
+                '✅ Pochette offerte',
+                '✅ Spotify',
+                '✅ Garantie + Livraison gratuite'
+            ]
+        },
+        {
+            id: 'smart',
+            name: '💼 Pack Smart',
+            price: 189,
+            details: [
+                '✅ AirPods USA',
+                '✅ Pochette',
+                '✅ Garantie + Livraison gratuite'
+            ]
+        },
+        {
+            id: 'solo',
+            name: '🎧 USA Solo',
+            price: 179,
+            details: [
+                '✅ AirPods USA فقط',
+                '✅ Garantie + Livraison gratuite'
+            ]
+        }
+    ];
     const { productId } = useParams(); // Get the productId from URL parameters
     const [product, setProduct] = useState(null);
     const [reviews, setReviews] = useState([]);
@@ -96,12 +132,22 @@ const ProductPage = () => {
             return;
         }
 
+        if (isAirpodsProduct && !selectedPack) {
+            Swal.fire({
+                title: 'يرجى اختيار الباك',
+                text: 'اختر أحد الباقات المتوفرة قبل إتمام الطلب.',
+                icon: 'warning',
+                confirmButtonText: 'حسناً'
+            });
+            return;
+        }
+
         // Ajoute la date et l'heure actuelles
         const currentDateTime = new Date();
 
         try {
             // Sélectionne le prix et la quantité en fonction de l'option choisie
-            const selectedPrice = formData.quantity === 'one' ? product.price : product.twoPrice;
+            const selectedPrice = isAirpodsProduct && selectedPack ? packs.find(p => p.id === selectedPack).price : (formData.quantity === 'one' ? product.price : product.twoPrice);
             const quantitySelected = formData.quantity === 'one' ? 1 : 2;
 
             // Ajouter les données du formulaire à Firestore
@@ -117,7 +163,9 @@ const ProductPage = () => {
                 price: selectedPrice, // Enregistrer le prix selon la sélection
                 date: currentDateTime.toLocaleDateString(),
                 time: currentDateTime.toLocaleTimeString(),
-                status: 'pending' // Statut par défaut
+                status: 'pending', // Statut par défaut
+                pack: isAirpodsProduct ? selectedPack : undefined, // Enregistrer le pack si AirPods
+                packLabel: isAirpodsProduct && selectedPack ? packs.find(p => p.id === selectedPack).name : undefined,
             });
 
             // Enregistrer l'ID du document dans l'état
@@ -248,6 +296,12 @@ const ProductPage = () => {
         }
     };
 
+    const handlePackSelect = (packId) => {
+        setSelectedPack(packId);
+        const pack = packs.find(p => p.id === packId);
+        if (pack) setPrice(pack.price);
+    };
+
     const handleScrollToFormAndSubmit = (e) => {
         // Appel de la fonction de défilement
         scrollToError();
@@ -257,6 +311,8 @@ const ProductPage = () => {
             handleFormSubmit(e);
         }, 300); // Ajustez le délai si nécessaire
     };
+
+    const isAirpodsProduct = product && airpodsProductNames.some(name => product.name && product.name.toLowerCase().includes(name.toLowerCase()));
 
     if (!product || !product.name) {
         return (
@@ -302,6 +358,35 @@ const ProductPage = () => {
                 <h1 style={{ fontSize: '16px' }}>{product.bonus3_ar} </h1>
                 <h1 style={{ fontSize: '16px' }}>{product.bonus4_ar} </h1>
 
+                {isAirpodsProduct && (
+                    <div className="packs-selection">
+                        <h3 className="choosepack-button" onClick={handleScrollToFormAndSubmit}>اختر الباك المناسب لك ▼</h3>
+                        <div className="packs-list">
+                            {packs.map(pack => (
+                                <div
+                                    key={pack.id}
+                                    className={`pack-card ${selectedPack === pack.id ? 'selected' : ''}`}
+                                    onClick={() => handlePackSelect(pack.id)}
+                                    style={{
+                                        border: selectedPack === pack.id ? '2px solid #28a745' : '1px solid #ccc',
+                                        borderRadius: '10px',
+                                        padding: '15px',
+                                        marginBottom: '10px',
+                                        cursor: 'pointer',
+                                        background: selectedPack === pack.id ? '#f0fff0' : '#fff'
+                                    }}
+                                >
+                                    <div style={{ fontWeight: 'bold', fontSize: '18px' }}>{pack.name} – {pack.price}Dh</div>
+                                    <ul style={{ margin: '10px 0 0 0', padding: 0, listStyle: 'none' }}>
+                                        {pack.details.map((d, i) => (
+                                            <li key={i}>{d}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
                 <div id="orderForm" className="order-form" ref={formRef}>
                     <p className="price">
                         <span className="new-price">د.م{price} </span>
@@ -387,7 +472,7 @@ const ProductPage = () => {
 
                             </div>
                         )}
-                        <div className="radio-group">
+                        {/* <div className="radio-group">
                             <input
                                 type="radio"
                                 id="one-piece"
@@ -407,7 +492,7 @@ const ProductPage = () => {
                                 onChange={handlePriceChange}
                             />
                             <p>العرض الثاني 2 ب {product.twoPrice} درهم </p><span className="promotion-small">-57%</span>
-                        </div>
+                        </div>*/}
 
                         <button type="submit" className="order-button">➤  اشتري الآن وادفع لاحقا</button>
                     </form>

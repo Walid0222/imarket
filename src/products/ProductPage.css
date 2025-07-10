@@ -153,7 +153,19 @@
     animation: pulse 4s infinite;
 font-weight: bold;
 }
-
+.choosepack-button {
+    background-color: #4765c3;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    
+font-weight: bold;
+}
 @keyframes pulse {
     0% {
         transform: scale(0);
